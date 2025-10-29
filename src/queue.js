@@ -1,33 +1,42 @@
-import { NotImplementedError } from '../extensions/index.js';
+// Очередь на базе одноcвязного списка
+// Методы: enqueue(value), dequeue(), getUnderlyingList()
+// getUnderlyingList возвращает head в формате { value: ..., next: ... }
 
-// import { ListNode } from '../extensions/list-node.js';
+class ListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
-/**
- * Implement the Queue with a given interface via linked list (use ListNode extension above).
- *
- * @example
- * const queue = new Queue();
- *
- * queue.enqueue(1); // adds the element to the queue
- * queue.enqueue(3); // adds the element to the queue
- * queue.dequeue(); // returns the top element from queue and deletes it, returns 1
- * queue.getUnderlyingList() // returns { value: 3, next: null }
- */
-export default class Queue {
-
-  getUnderlyingList() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+class Queue {
+  constructor() {
+    this.head = null; // старший элемент (извлекаемый)
+    this.tail = null; // последний добавленный
   }
 
-  enqueue(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  enqueue(value) {
+    const node = new ListNode(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
   }
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (!this.head) return undefined;
+    const value = this.head.value;
+    this.head = this.head.next;
+    if (!this.head) this.tail = null;
+    return value;
   }
 
+  getUnderlyingList() {
+    return this.head;
+  }
 }
+
+export default Queue;
