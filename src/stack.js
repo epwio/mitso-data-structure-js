@@ -1,5 +1,4 @@
-// Реализация стека на основе массива
-// Класс Stack с методами push, pop, peek
+
 
 class Stack {
   constructor() {
