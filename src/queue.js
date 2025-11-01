@@ -1,6 +1,4 @@
-// Очередь на базе одноcвязного списка
-// Методы: enqueue(value), dequeue(), getUnderlyingList()
-// getUnderlyingList возвращает head в формате { value: ..., next: ... }
+
 
 class ListNode {
   constructor(value) {
