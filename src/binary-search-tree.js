@@ -1,5 +1,4 @@
-// Binary Search Tree implementation
-// Экспортируется класс BinarySearchTree
+
 
 class Node {
   constructor(data) {
